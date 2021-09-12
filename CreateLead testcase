@@ -1,0 +1,63 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select; 
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class LaunchBrowser {
+
+	public static void main(String[] args) {
+		WebDriverManager.chromedriver().setup();  //step 1
+		ChromeDriver driver=new ChromeDriver();  // step 2
+		driver.manage().window().maximize();  // step 3
+		driver.get("http://leaftaps.com/opentaps/control/main");  // step 4
+		String title=driver.getTitle(); // step 5
+		System.out.println("Title: " + title); // step 6
+		WebElement username= driver.findElement(By.id("username"));
+		username.sendKeys("demosalesmanager");
+		WebElement password=driver.findElement(By.id("password"));
+		password.sendKeys("crmsfa");
+		WebElement loginbutton=driver.findElement(By.className("decorativeSubmit"));
+		loginbutton.click();
+		driver.findElement(By.linkText("CRM/SFA")).click();
+		//driver.close(); // step 7
+		driver.findElement(By.linkText("Leads")).click();
+		driver.findElement(By.linkText("Create Lead")).click();
+		WebElement idcreateLeadForm_companyName=driver.findElement(By.id("createLeadForm_companyName"));
+		idcreateLeadForm_companyName.sendKeys("Tata Group");
+		driver.findElement(By.id("createLeadForm_firstName")).sendKeys("Chandrasekar");
+		driver.findElement(By.id("createLeadForm_firstNameLocal")).sendKeys("chandru");
+		driver.findElement(By.id("createLeadForm_personalTitle")).sendKeys("Mr");
+		driver.findElement(By.id("createLeadForm_generalProfTitle")).sendKeys("Sir");
+		driver.findElement(By.id("createLeadForm_annualRevenue")).sendKeys("47874.43");
+		driver.findElement(By.id("createLeadForm_sicCode")).sendKeys("123456");
+		driver.findElement(By.id("createLeadForm_lastName")).sendKeys("Natarajan");
+		driver.findElement(By.id("createLeadForm_lastNameLocal")).sendKeys("Nattu");
+		driver.findElement(By.id("createLeadForm_birthDate")).sendKeys("06/02/63");
+		driver.findElement(By.id("createLeadForm_departmentName")).sendKeys("IT");
+		driver.findElement(By.id("createLeadForm_numberEmployees")).sendKeys("417929");
+		driver.findElement(By.id("createLeadForm_tickerSymbol")).sendKeys("123456789");
+		driver.findElement(By.id("createLeadForm_description")).sendKeys("TCS Provides the IT services to various vendors, third parties and other companies also, they have their own product");
+		driver.findElement(By.id("createLeadForm_importantNote")).sendKeys("One of the top companies in INDIA");
+		driver.findElement(By.id("createLeadForm_primaryPhoneCountryCode")).clear();
+		driver.findElement(By.id("createLeadForm_primaryPhoneCountryCode")).sendKeys("91");
+		driver.findElement(By.id("createLeadForm_primaryPhoneNumber")).sendKeys("9566157951");
+		driver.findElement(By.id("createLeadForm_primaryPhoneAreaCode")).sendKeys("91");
+		driver.findElement(By.id("createLeadForm_primaryPhoneExtension")).sendKeys("44");
+		driver.findElement(By.id("createLeadForm_primaryPhoneAskForName")).sendKeys("Raghul");
+		driver.findElement(By.id("createLeadForm_primaryEmail")).sendKeys("raghulagarwal@gmail.com");
+		driver.findElement(By.id("createLeadForm_primaryWebUrl")).sendKeys("https://www.linkedin.com/in/raghullakshmanan/");
+		driver.findElement(By.id("createLeadForm_generalToName")).sendKeys("Raghul Lakshmanan");
+		driver.findElement(By.id("createLeadForm_generalAttnName")).sendKeys("Raghul");
+		driver.findElement(By.id("createLeadForm_generalAddress1")).sendKeys("No 1/15, second floor, sidco main road");
+		driver.findElement(By.id("createLeadForm_generalAddress2")).sendKeys("KKD Nagar");
+		driver.findElement(By.id("createLeadForm_generalCity")).sendKeys("Chennai");
+		driver.findElement(By.id("createLeadForm_generalPostalCode")).sendKeys("600118");
+		driver.findElement(By.id("createLeadForm_generalPostalCodeExt")).sendKeys("118");
+		Select dropdown = new Select(driver.findElement(By.id("createLeadForm_generalStateProvinceGeoId")));  
+		dropdown.selectByVisibleText("Alabama");  
+		driver.findElement(By.className("smallSubmit")).click();
+	}
+	
+}
