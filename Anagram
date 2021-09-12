@@ -1,0 +1,35 @@
+package week2.day.day2.assignments;
+import java.util.Arrays;
+
+public class Anagram {
+
+	public static void main(String[] args) {
+		String text1 = "stops";
+		String text2 = "potss";
+		String s1 = "",s2 = "";
+		char[] ch1 = text1.toCharArray();
+		char[] ch2 = text2.toCharArray();
+		Arrays.sort(ch1);
+		Arrays.sort(ch2);
+		int length = text1.length();
+		int length2 = text2.length();
+		if (length == length2) 
+		{
+			System.out.println("Length is same");
+		} else
+			System.out.println("length is not same");
+		for(int i=0;i<ch1.length;i++)
+		{
+			System.out.println(ch1[i]+" and "+ch2[i] );
+			s1+=ch1[i];
+			s2+=ch2[i];
+		}
+		if(s1==s2)
+		{
+			System.out.println("Given word is anagram");
+		}else
+			System.out.println("Given word is anagram");
+		
+		
+				
+	}}
