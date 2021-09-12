@@ -1,0 +1,22 @@
+package week2.day.day2.assignments;
+
+public class PalindromeString {
+
+	public static void main(String[] args) {
+		String str = "madam";
+		String reverse = "";
+		int i = 0;
+		char[] arraychar = str.toCharArray();
+		for (i = arraychar.length - 1; i >= 0; i--) // it will print from 4 to 0 i-- decrease the counts print
+		{
+			reverse += arraychar[i];//(assigns from reverse order to reverse variable)
+		}
+
+		// reverse=String.valueOf(arraychar[i]);
+		boolean equals = str.equals(reverse);
+		if (equals)
+			System.out.println("Palindrome");
+		else
+			System.out.println("not palindrome");
+	}
+}
