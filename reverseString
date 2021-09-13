@@ -1,0 +1,18 @@
+package week2.day.day2.assignments;
+
+public class ReverseString {
+
+	public static void main(String[] args) {
+		String test= "feeling good";
+		String reverseStr="";
+		char[] cs = test.toCharArray();
+		int i=0;
+// for loop always starts from 0 to loop(Anything nesting is starts from 0)
+		for(i=cs.length-1;i>=0;i--)
+		{
+			reverseStr+=cs[i];
+		}
+		System.out.println(reverseStr);
+	}
+
+}
