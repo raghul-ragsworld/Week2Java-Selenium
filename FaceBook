@@ -1,0 +1,53 @@
+package week2.day.day2.assignments;
+
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.support.ui.Select;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class FaceBook {
+
+	public static void main(String[] args) {
+		WebDriverManager.chromedriver().setup();
+		ChromeDriver driver=new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://en-gb.facebook.com/");
+		String title=driver.getTitle();
+		System.out.println(title);
+		driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
+		WebElement login=driver.findElement(By.xpath("//a[@class='_42ft _4jy0 _6lti _4jy6 _4jy2 selected _51sy']"));
+		login.click();
+		WebElement FirstName=driver.findElement(By.name("firstname"));
+		FirstName.sendKeys("Teddy");
+		WebElement SureName=driver.findElement(By.name("lastname"));
+		SureName.sendKeys("RagsWorld");
+		WebElement Num=driver.findElement(By.name("reg_email__"));
+		Num.sendKeys("9840836235");
+		WebElement Pwd=driver.findElement(By.name("reg_passwd__"));
+		Pwd.sendKeys("Karadi@1234");
+		WebElement BirthDay=driver.findElement(By.id("day"));// step1 
+		Select dropday=new Select(BirthDay); // step 2
+		dropday.selectByValue("10");
+		WebElement month=driver.findElement(By.id("month"));// step1 
+		Select dropmonth=new Select(month); // step 2
+		dropmonth.selectByValue("12"); // step 3 
+		WebElement year=driver.findElement(By.id("year"));// step1 
+		Select dropyear=new Select(year); // step 2
+		dropyear.selectByIndex(27); // step 3 
+		WebElement gender=driver.findElement(By.xpath("//label[@class='_58mt']"));
+		gender.click();
+		WebElement signup=driver.findElement(By.name("websubmit"));
+		signup.click();
+		
+		
+		
+		
+		
+
+	}
+
+}
