@@ -1,0 +1,42 @@
+package week2.day.day2.assignments;
+
+import java.util.concurrent.TimeUnit;
+
+import org.apache.hc.core5.util.Timeout;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class SalesForce {
+
+	public static void main(String[] args) {
+		WebDriverManager.chromedriver().setup();
+		ChromeDriver driver=new ChromeDriver();
+		driver.get("https://www.salesforce.com/in/form/signup/freetrial-sales/?d=70130000000Enyk");
+		driver.manage().window().maximize();	
+		driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
+		WebElement firstname=driver.findElement(By.name("UserFirstName"));
+		firstname.sendKeys("Raghul");
+		WebElement lastname=driver.findElement(By.name("UserLastName"));
+		lastname.sendKeys("Lakshmanan");
+		WebElement mail=driver.findElement(By.name("UserEmail"));
+		mail.sendKeys("raghul1308@yahoo.com");
+		WebElement JobTitle=driver.findElement(By.name("UserTitle"));
+		Select jobtitle1=new Select(JobTitle);
+		jobtitle1.selectByIndex(8);
+		WebElement CompanyName=driver.findElement(By.name("CompanyName"));
+		CompanyName.sendKeys("FSS");
+		WebElement EmpCount=driver.findElement(By.name("CompanyEmployees"));
+		Select EmpCnt=new Select(EmpCount);
+		EmpCnt.selectByValue("1600");
+		WebElement phone=driver.findElement(By.name("UserPhone"));
+		phone.sendKeys("9566157951");
+		WebElement check=driver.findElement(By.className("checkbox-ui"));
+		check.click();
+		driver.close();
+	}
+
+}
