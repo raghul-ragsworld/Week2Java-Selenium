@@ -1,0 +1,27 @@
+package week2.day.day2.assignments;
+import org.openqa.selenium.support.ui.Select;  
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class LoginUiPath {
+
+	public static void main(String[] args) throws InterruptedException  {
+		WebDriverManager.chromedriver().setup();  //step 1
+		ChromeDriver driver=new ChromeDriver();  // step 2
+		driver.manage().window().maximize();  // step 3
+		driver.get("https://acme-test.uipath.com/login");  // step 4
+		String title=driver.getTitle(); // step 5
+		System.out.println("Title: " + title); // step 6
+		WebElement username= driver.findElement(By.id("email"));
+		username.sendKeys("kumar.testleaf@gmail.com");
+		WebElement password=driver.findElement(By.id("password"));
+		password.sendKeys("leaf@12");
+		WebElement loginbutton=driver.findElement(By.xpath("//button[@class='btn btn-primary']"));
+		loginbutton.click();
+		driver.findElement(By.linkText("Log Out")).click();
+		driver.close();
+	}
+}
